@@ -70,20 +70,29 @@
   50% { transform: translateY(-7px); }
 }
 
-    .spark{
-      position:absolute;
-      width:16px; height:16px;
-      border-radius:50%;
-      background: #ffd36a;
-      opacity:0.95;
-      animation: pop 1.35s ease-out forwards;
-      filter: drop-shadow(0 0 16px rgba(255, 211, 106, 0.95));
-    }
-    @keyframes pop{
-      0%{ transform: scale(0.6); opacity:0.0;}
-      15%{ opacity:0.95;}
-      100%{ transform: translate(var(--dx), var(--dy)) scale(0.1); opacity:0;}
-    }
+   .spark{
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  opacity:0.95;
+  animation: explode 1.8s ease-out forwards;
+  filter: drop-shadow(0 0 18px currentColor);
+}
+
+@keyframes explode{
+  0%{
+    transform: scale(0.3);
+    opacity:1;
+  }
+  80%{
+    opacity:1;
+  }
+  100%{
+    transform: translate(var(--dx), var(--dy)) scale(0.1);
+    opacity:0;
+  }
+}
 
     .horses {
   position: fixed;
@@ -152,7 +161,7 @@
     <button id="btn">Celebrate 🎆</button>
     <div class="hint">
   <span class="hand">👈</span>
-  <span>Click “Celebrate” to watch the fireworks!</span>
+  <span>Click to watch the fireworks😊!</span>
 </div>
     <p style="margin:14px 0 0; font-size:14px; opacity:0.85;">Made with ❤️ by Lorena</p>
   </div>
