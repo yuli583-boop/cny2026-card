@@ -118,34 +118,57 @@
     
 
  .lantern{
+  .lantern{
   position:absolute;
   bottom:-120px;
   width:60px;
-  height:60px;
-  border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 70%);
+  height:80px;
+  border-radius:50% / 60%;
+  background: radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 75%);
   border: 2px solid rgba(255,215,0,0.6);
-  box-shadow: 
-    0 12px 24px rgba(0,0,0,0.3),
-    inset 0 -6px 12px rgba(0,0,0,0.3);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35),
+    inset 0 -8px 16px rgba(0,0,0,0.4);
   animation: floatUp linear infinite;
   opacity:0.95;
 }
     .lantern::before{
-      content:"";
-      position:absolute; left:50%; top:-10px;
-      width:14px; height:10px;
-      transform: translateX(-50%);
-      border-radius:6px;
-      background: rgba(255,215,0,0.85);
-    }
-    .lantern::after{
-      content:"";
-      position:absolute; left:50%; bottom:-18px;
-      width:2px; height:18px;
-      transform: translateX(-50%);
-      background: rgba(255,215,0,0.75);
-    }
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-12px;
+  width:26px;
+  height:10px;
+  transform: translateX(-50%);
+  border-radius:6px;
+  background: linear-gradient(#ffd700, #c9a000);
+}
+.lantern::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-16px;
+  width:18px;
+  height:18px;
+  transform: translateX(-50%);
+  border-radius:50%;
+  background: linear-gradient(#ffd700, #c9a000);
+}
+
+background:
+  linear-gradient(to right,
+    transparent 20%,
+    rgba(255,215,0,0.3) 22%,
+    transparent 24%,
+    transparent 48%,
+    rgba(255,215,0,0.3) 50%,
+    transparent 52%,
+    transparent 76%,
+    rgba(255,215,0,0.3) 78%,
+    transparent 80%
+  ),
+  radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 75%);
+   
     @keyframes floatUp{
       from{ transform: translateY(0) translateX(0); }
       to{ transform: translateY(-120vh) translateX(var(--drift)); }
