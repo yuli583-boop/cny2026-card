@@ -120,16 +120,30 @@
  .lantern{
   position:absolute;
   bottom:-120px;
-  width:46px;
-  height:66px;
-  border-radius:14px;
-  background: linear-gradient(#ff4a5e, #b1001a);
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  width:60px;
+  height:80px;
+  border-radius:50% / 60%;
+  background:
+    linear-gradient(to right,
+      transparent 20%,
+      rgba(255,215,0,0.3) 22%,
+      transparent 24%,
+      transparent 48%,
+      rgba(255,215,0,0.3) 50%,
+      transparent 52%,
+      transparent 76%,
+      rgba(255,215,0,0.3) 78%,
+      transparent 80%
+    ),
+    radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 75%);
+  border: 2px solid rgba(255,215,0,0.6);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35),
+    inset 0 -8px 16px rgba(0,0,0,0.4);
   animation: floatUp linear infinite;
-  opacity:0.9;
-  z-index: 0;   /* 👈 ADD THIS */
-}    
+  opacity:0.95;
+  z-index: 3;
+}
     
     .lantern::before{
   content:"";
@@ -154,19 +168,6 @@
   background: linear-gradient(#ffd700, #c9a000);
 }
 
-background:
-  linear-gradient(to right,
-    transparent 20%,
-    rgba(255,215,0,0.3) 22%,
-    transparent 24%,
-    transparent 48%,
-    rgba(255,215,0,0.3) 50%,
-    transparent 52%,
-    transparent 76%,
-    rgba(255,215,0,0.3) 78%,
-    transparent 80%
-  ),
-  radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 75%);
    
     @keyframes floatUp{
       from{ transform: translateY(0) translateX(0); }
