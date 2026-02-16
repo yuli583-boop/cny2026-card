@@ -107,17 +107,21 @@
 /* Make sure the card stays above the horses */
 .card { position: relative; z-index: 2; }
     
-    .lantern{
-      position:absolute;
-      bottom:-120px;
-      width:46px; height:66px;
-      border-radius:14px;
-      background: linear-gradient(#ff4a5e, #b1001a);
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
-      animation: floatUp linear infinite;
-      opacity:0.9;
-    }
+
+ .lantern{
+  position:absolute;
+  bottom:-120px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 70%);
+  border: 2px solid rgba(255,215,0,0.6);
+  box-shadow: 
+    0 12px 24px rgba(0,0,0,0.3),
+    inset 0 -6px 12px rgba(0,0,0,0.3);
+  animation: floatUp linear infinite;
+  opacity:0.95;
+}
     .lantern::before{
       content:"";
       position:absolute; left:50%; top:-10px;
