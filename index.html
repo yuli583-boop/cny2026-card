@@ -52,21 +52,60 @@
     }
     button:active{ transform: translateY(1px); }
 
+    .hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 15px;
+  opacity: 0.92;
+}
+.hint .hand {
+  display: inline-block;
+  animation: nudge 0.9s ease-in-out infinite;
+}
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
     .spark{
       position:absolute;
-      width:8px; height:8px;
+      width:16px; height:16px;
       border-radius:50%;
       background: #ffd36a;
-      opacity:0.9;
-      animation: pop 1.2s ease-out forwards;
-      filter: drop-shadow(0 0 10px rgba(255, 211, 106, 0.9));
+      opacity:0.95;
+      animation: pop 1.35s ease-out forwards;
+      filter: drop-shadow(0 0 16px rgba(255, 211, 106, 0.95));
     }
     @keyframes pop{
       0%{ transform: scale(0.6); opacity:0.0;}
-      15%{ opacity:0.9;}
+      15%{ opacity:0.95;}
       100%{ transform: translate(var(--dx), var(--dy)) scale(0.1); opacity:0;}
     }
 
+    .horses {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+.horse {
+  position: absolute;
+  font-size: 52px;
+  animation: gallop linear infinite;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+}
+@keyframes gallop {
+  from { transform: translateX(-25vw); }
+  to { transform: translateX(125vw); }
+}
+
+/* Make sure the card stays above the horses */
+.card { position: relative; z-index: 2; }
+    
     .lantern{
       position:absolute;
       bottom:-120px;
@@ -106,9 +145,21 @@
     <p class="cn">祝新春大吉, 万事顺意，马到成功！</p>
     <p class="msg">Wishing you health, happiness, and good fortune in the new year ✨</p>
     <button id="btn">Celebrate 🎆</button>
+    <div class="hint">
+  <span class="hand">👇</span>
+  <span>Click “Celebrate” to watch the fireworks!</span>
+</div>
     <p style="margin:14px 0 0; font-size:14px; opacity:0.85;">Made with ❤️ by Lorena</p>
   </div>
 
+<div class="horses" aria-hidden="true">
+  <span class="horse" style="top: 12%; animation-duration: 9s;  animation-delay: -1s;">🐎</span>
+  <span class="horse" style="top: 28%; animation-duration: 12s; animation-delay: -6s;">🐎</span>
+  <span class="horse" style="top: 46%; animation-duration: 10s; animation-delay: -3s;">🐎</span>
+  <span class="horse" style="top: 63%; animation-duration: 14s; animation-delay: -9s;">🐎</span>
+  <span class="horse" style="top: 78%; animation-duration: 11s; animation-delay: -4s;">🐎</span>
+</div>
+  
   <script>
     // floating lanterns
     for (let i=0;i<10;i++){
@@ -125,18 +176,30 @@
     const card = document.getElementById('card');
     const btn = document.getElementById('btn');
     btn.addEventListener('click', () => {
-      for (let i=0;i<26;i++){
-        const s = document.createElement('div');
-        s.className='spark';
-        const rect = card.getBoundingClientRect();
-        s.style.left = (rect.left + rect.width/2) + 'px';
-        s.style.top = (rect.top + rect.height/2) + 'px';
-        s.style.setProperty('--dx', (Math.random()*300 - 150) + 'px');
-        s.style.setProperty('--dy', (Math.random()*240 - 120) + 'px');
-        document.body.appendChild(s);
-        setTimeout(()=>s.remove(), 1400);
-      }
-    });
+  const rect = card.getBoundingClientRect();
+
+  // 3 big bursts
+  for (let burst = 0; burst < 3; burst++) {
+    const centerX = rect.left + rect.width / 2 + (Math.random() * 200 - 100);
+    const centerY = rect.top + rect.height / 2 + (Math.random() * 160 - 80);
+
+    // more sparks per burst
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'spark';
+
+      s.style.left = centerX + 'px';
+      s.style.top = centerY + 'px';
+
+      // MUCH wider explosion
+      s.style.setProperty('--dx', (Math.random() * 900 - 450) + 'px');
+      s.style.setProperty('--dy', (Math.random() * 700 - 350) + 'px');
+
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1700);
+    }
+  }
+});
   </script>
 </body>
 </html>
