@@ -70,22 +70,22 @@
   50% { transform: translateY(-7px); }
 }
 
-   .spark{
+  .spark{
   position:absolute;
-  width:18px;
-  height:18px;
+  width:16px;
+  height:16px;
   border-radius:50%;
-  opacity:0.95;
-  animation: explode 1.8s ease-out forwards;
-  filter: drop-shadow(0 0 18px currentColor);
+  background: #ffd36a;
+  opacity:1;
+  pointer-events:none;
+  z-index: 9999;
+  animation: explode 1.6s ease-out forwards;
+  filter: drop-shadow(0 0 18px rgba(255, 211, 106, 0.95));
 }
 
 @keyframes explode{
   0%{
-    transform: scale(0.3);
-    opacity:1;
-  }
-  80%{
+    transform: translate(0,0) scale(0.5);
     opacity:1;
   }
   100%{
@@ -118,20 +118,19 @@
     
 
  .lantern{
-  .lantern{
   position:absolute;
   bottom:-120px;
-  width:60px;
-  height:80px;
-  border-radius:50% / 60%;
-  background: radial-gradient(circle at 30% 30%, #ff6b7d, #b1001a 75%);
-  border: 2px solid rgba(255,215,0,0.6);
-  box-shadow:
-    0 14px 28px rgba(0,0,0,0.35),
-    inset 0 -8px 16px rgba(0,0,0,0.4);
+  width:46px;
+  height:66px;
+  border-radius:14px;
+  background: linear-gradient(#ff4a5e, #b1001a);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
   animation: floatUp linear infinite;
-  opacity:0.95;
-}
+  opacity:0.9;
+  z-index: 0;   /* 👈 ADD THIS */
+}    
+    
     .lantern::before{
   content:"";
   position:absolute;
